@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "dev" : "node server.js"
+    "dev": "nodemon --exec node server.js"
   },
   "repository": {
     "type": "git",
@@ -19,7 +19,17 @@
   },
   "homepage": "https://github.com/UniD-Hackathon-Team2/CampUS_Backend#readme",
   "dependencies": {
+    "@babel/runtime": "^7.17.9",
     "apollo-server": "^3.6.2",
     "graphql": "^16.3.0"
-  }
+  },
+  "devDependencies": {
+    "@babel/cli": "^7.17.10",
+    "@babel/core": "^7.17.7",
+    "@babel/node": "^7.16.8",
+    "@babel/plugin-transform-runtime": "^7.17.10",
+    "@babel/preset-env": "^7.16.11",
+    "nodemon": "^2.0.15"
+  },
+  "type": "module"
 }
