@@ -17,4 +17,6 @@ model User {
   userName String @unique
   userId String @unique 
   userPassword String
+  hashtag String[]
 }
+
