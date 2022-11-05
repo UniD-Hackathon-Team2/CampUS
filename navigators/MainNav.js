@@ -5,10 +5,12 @@ import AppLoading from "expo-app-loading";
 import { Text, TouchableOpacity } from "react-native"
 import { WithLocalSvg } from "react-native-svg";
 import Home from "../screens/Home";
+import MyInfo from "../screens/MyInfo";
+import Search from "../screens/Search";
 
 const Stack = createStackNavigator();
 
-export default function MainNav(){
+export default function MainNav({navigation}){
     const [fontLoading, setFontLoading] = useState(true);
     const loadFonts = async()=>{
         await Font.loadAsync({
@@ -49,6 +51,28 @@ export default function MainNav(){
                     headerTitleAlign: "center"
                 }}
                 component={Home}
+            />
+            <Stack.Screen
+                name="MyInfo"
+                options={{
+                    headerBackTitle: ()=> null,
+                    headerTitle: ()=> (
+                        <Text style={{fontSize: 24, fontFamily: 'Jalnan', marginTop: 10}}>내 정보</Text>
+                    ),
+                    headerTitleAlign: "center",
+                }}
+                component={MyInfo}
+            />
+            <Stack.Screen
+                name="Search"
+                options={{
+                    headerBackTitle: ()=> null,
+                    headerTitle: ()=> (
+                        <Text style={{fontSize: 24, fontFamily: 'Jalnan', marginTop: 10}}>검색</Text>
+                    ),
+                    headerTitleAlign: "center",
+                }}
+                component={Search}
             />
         </Stack.Navigator>
     )

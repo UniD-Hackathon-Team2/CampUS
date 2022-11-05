@@ -50,6 +50,8 @@ const onErrorLink = onError(({ graphQLErrors, networkError }) => {
 	}
 });
 
+export const cache = new InMemoryCache();
+
 const httpLinks = authLink.concat(onErrorLink).concat(uploadHttpLink);
 
 const splitLink = split(
