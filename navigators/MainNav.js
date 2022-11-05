@@ -2,7 +2,7 @@ import React, {useState} from "react";
 import { createStackNavigator } from "@react-navigation/stack";
 import * as Font from "expo-font";
 import AppLoading from "expo-app-loading";
-import { Text, TouchableOpacity } from "react-native"
+import { Text, Image } from "react-native"
 import { WithLocalSvg } from "react-native-svg";
 import Home from "../screens/Home";
 import MyInfo from "../screens/MyInfo";
@@ -49,7 +49,14 @@ export default function MainNav({navigation}){
                     headerBackTitle: ()=> null,
                     headerLeft: () => null,
                     headerTitle: ()=> (
-                        <Text style={{fontSize: 24, fontFamily: 'Jalnan', marginTop: 10}}>홈</Text>
+                        <Image 
+                            source={require("../assets/image/logo.png")} 
+                            style={{
+                                width: 80,
+                                height: 30,
+                                marginTop: 5
+                            }}
+                        />
                     ),
                     headerTitleAlign: "center"
                 }}

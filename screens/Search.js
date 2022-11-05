@@ -45,7 +45,7 @@ export default function Search({navigation}){
                             <Text style={{
                                 fontFamily: 'Jalnan',
                                 fontSize: 20,
-                                color: "purple"
+                                color: colors.purple
                             }}>캠페인</Text>
                         </TouchableOpacity>
                     ): (
@@ -63,7 +63,7 @@ export default function Search({navigation}){
                             <Text style={{
                                 fontFamily: 'Jalnan',
                                 fontSize: 20,
-                                color: "purple"
+                                color: colors.purple
                             }}>인증</Text>
                         </TouchableOpacity>
                     ):(
