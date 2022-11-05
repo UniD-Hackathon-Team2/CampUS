@@ -10,6 +10,7 @@ import Search from '../screens/Search';
 import WriteCampaignPost from '../screens/WriteCampaignPost';
 import WriteAuthPost from '../screens/WriteAuthPost';
 import ViewCampaignPost from '../screens/ViewCampaignPost';
+import FundRaisingComplete from '../screens/FundRaisingComplete';
 
 const Stack = createStackNavigator();
 
@@ -114,6 +115,19 @@ export default function MainNav({ navigation }) {
           headerTitleAlign: 'center',
         }}
         component={ViewCampaignPost}
+      />
+      <Stack.Screen
+        name="FundRaisingComplete"
+        options={{
+          headerBackTitle: () => null,
+          headerTitle: () => (
+            <Text style={{ fontSize: 24, fontFamily: 'Jalnan', marginTop: 10 }}>
+              모금 완료
+            </Text>
+          ),
+          headerTitleAlign: 'center',
+        }}
+        component={FundRaisingComplete}
       />
     </Stack.Navigator>
   );

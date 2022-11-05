@@ -19,6 +19,7 @@ import { colors } from '../colors';
 import SharePurple from '../assets/icon/share_button_purple.svg';
 import CommentPurple from '../assets/icon/comment_purple.svg';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
+import FundRaisingComplete from './FundRaisingComplete';
 const DATA = {
   title: '일회용품 줄이기 같이 참여해주세요',
   writer: '환경 지키미',
@@ -220,6 +221,9 @@ export default function WriteAuthPost({ navigation }) {
             style={({ pressed }) => ({
               opacity: pressed ? 0.5 : 1,
             })}
+            onPress={() => {
+              navigation.navigate(FundRaisingComplete);
+            }}
           >
             <View
               style={{
