@@ -5,8 +5,8 @@ export default {
     Mutation: {
         uploadCampaignPost: protectedResolver(
             async (_, {title, text, location, maxnum, hashtag, minnum, isfund}, {loggedInUser}) => {
-
-                return client.post.create({
+                console.log(loggedInUser.id);
+                let campaignpost =  client.campaignpost.create({
                     data: {
                         title,
                         text,
@@ -22,6 +22,8 @@ export default {
                         }
                     }
                 });
+                console.log(campaignpost);
+            return campaignpost;
         }), 
     },
 };

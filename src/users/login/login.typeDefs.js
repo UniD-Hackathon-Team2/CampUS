@@ -10,6 +10,6 @@ export default gql`
 		login(
             userId: String!
             userPassword: String!
-            ): MutationResponse!
+            ): LoginResult!
 	} 
 `;
