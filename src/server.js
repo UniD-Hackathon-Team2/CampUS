@@ -15,7 +15,7 @@ import { makeExecutableSchema } from "@graphql-tools/schema";
 import {
   ApolloServerPluginLandingPageLocalDefault,
   ApolloServerPluginLandingPageGraphQLPlayground
-  } from "apollo-server-core";
+} from "apollo-server-core";
 
 const schema = makeExecutableSchema({ typeDefs, resolvers });
 
@@ -23,7 +23,6 @@ async function startServer() {
   const apollo = new ApolloServer({
     schema,
     uploads: false,
-    introspection: true,
     context: async (ctx) => {
       if (ctx.req) { //http로 통신할때 (req , res)
         return {
