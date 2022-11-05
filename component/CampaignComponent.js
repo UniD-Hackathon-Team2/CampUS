@@ -148,7 +148,7 @@ export default function CompaignComponent() {
                 style={({ pressed }) => ({
                   opacity: pressed ? 0.5 : 1,
                 })}
-                onPress={() => navigation.navigate('Profile')}
+                onPress={() => {}}
               >
                 <View style={styles.hashtag} key={item}>
                   <Text style={{ color: 'white' }}>{item}</Text>
@@ -159,7 +159,7 @@ export default function CompaignComponent() {
                 style={({ pressed }) => ({
                   opacity: pressed ? 0.5 : 1,
                 })}
-                onPress={() => navigation.navigate('Profile')}
+                onPress={() => {}}
               >
                 <View style={[styles.hashtag, styles.hashtagFirst]} key={item}>
                   <Text style={{ color: '#645CAA' }}>{item}</Text>
