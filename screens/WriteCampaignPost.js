@@ -8,7 +8,7 @@ const Container = styled.View`
     align-items: center;
 `;
 
-export default function WirteCampainPost({navigation}) {
+export default function WriteCampaignPost({navigation}) {
     return(
         <Container>
             <View
@@ -26,6 +26,9 @@ export default function WirteCampainPost({navigation}) {
                         marginTop: 10
                     }}
                 />
+                <Text style={{
+                    
+                }}>제목</Text>
                 <Text style={{color: "purple", marginTop: 20}}>마감일</Text>
                 <TextInput
                     style={{
