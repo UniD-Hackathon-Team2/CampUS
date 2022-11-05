@@ -16,51 +16,46 @@ model User {
   userName        String @unique
   userId          String @unique 
   userPassword    String
+  participatedPost Int[] //내가 참여한 캠페인 리스트
   hashtag         String[]
   createdAt       DateTime @default(now())
-  campaignPosts CampaignPost[]
-  authPosts AuthPost[]
-  comments  Comment[]
+  campaignposts Campaignpost[] //내가 쓴 캠페인 리스트
+  Authposts Authpost[] //내가 쓴 캠페인 리스트
 }
 
-model CampaignPost {
+model Campaignpost {
   id Int @id @default(autoincrement())
   userId Int
   createdAt DateTime @default(now())
-  title String
-  text String
-  location String
-  maxnum Int
+  title String?
+  text String?
+  location String?
+  maxnum Int?
   hashtag String[]
-  minnum Int
-  views Int
-  isfund Boolean
+  minnum Int?
+  views Int?
+  participant Int @default(0)
+  isfund Boolean?
   user User @relation(fields : [userId],references : [id])
-  authPost AuthPost[]
-  comments Comment[]
 }
 
-model AuthPost {
+model Authpost {
   id                          Int @id @default(autoincrement())
-  createdAt                   DateTime @default(now())
+  userId Int
   photo                       String[]
+  hashtag                     String[]
   title                       String
   text                        String
   campaignPostId              Int
+  participant Int @default(0)
   authUserId                  Int
-  campaignPost CampaignPost @relation(fields : [campaignPostId], references : [id])
-  authUser User @relation(fields : [authUserId], references : [id])
-  comments Comment[]
+  user User @relation(fields : [userId],references : [id])
 }
+
 
 model Comment{
   id                Int @id @default(autoincrement())
-  userId            Int
-  authId            Int
-  campaignpostId    Int
-  createAt          DateTime @default(now())
-  text              String
-  user User @relation (fields: [userId], references: [id])
-  authpost AuthPost @relation (fields: [authId], references: [id])
-  campaignpost CampaignPost @relation (fields: [campaignpostId], references: [id])
+  writerId          Int? // 글쓴 사람의 ID
+  campaignpostId    Int? // 댓글을 쓴 원본 포스트의 ID
+  text              String? 
 }

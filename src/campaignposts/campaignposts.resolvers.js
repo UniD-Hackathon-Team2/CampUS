@@ -1,7 +1,7 @@
 import client from "../client"
 
 export default {
-    CampaignPost: {
+    Campaignpost: {
         user: ({userId}) => {
             return client.user.findUnique({
                 where: {

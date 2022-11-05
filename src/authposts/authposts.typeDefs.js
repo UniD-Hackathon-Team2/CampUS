@@ -1,15 +1,13 @@
 import { gql } from "apollo-server";
 
 export default gql`
-type Campaignpost {
+type Authpost {
     id : Int!
     userId : Int!
-    createdAt : String!
     title : String!
     text : String!
-    location : String!
-    maxnum : Int!
-    minnum : Int!
+    authUserId : Int!
+    campaignPostId : Int!
     hashtag : [String]
     photo : [String]
     views : Int!

@@ -10,6 +10,7 @@ export default gql`
             hashtag: [String]
             minnum: Int
             isfund: Boolean
-        ): CampaignPost
+            views : Int
+        ): Campaignpost
     }
 `

@@ -1,12 +1,12 @@
 import client from "../../client"
 import { protectedResolver } from "../../users/users.utils";
+
 export default {
     Mutation: {
         uploadCampaignPost: protectedResolver(
-            async (_, {title, text, location, maxnum, hashtag, minnum, isfund}, {loggedInUser}) => {
+            async (_, {title, text, location, maxnum, hashtag, minnum, isfund,views,userId}, {loggedInUser}) => {
                 console.log(loggedInUser.id);
-           
-                let campaignpost = client.campaignpost.create({
+                return client.campaignpost.create({
                     data: {
                         title,
                         text,
@@ -14,6 +14,7 @@ export default {
                         maxnum,
                         hashtag,
                         minnum,
+                        views,
                         isfund,
                         user: {
                             connect: {
