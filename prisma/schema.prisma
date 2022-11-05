@@ -18,19 +18,17 @@ model User {
   userId String @unique 
   userPassword String
   hashtag String[]
-  campaignPosts CampaignPost[]
 }
 
-model CampaignPost {
-  id  Int @id @default(autoincrement())
-  userId Int
+model AuthPost {
+  id Int @id @default(autoincrement())
   createdAt DateTime @default(now())
+  photo String[]
   title String
   text String
-  location String
-  maxnum Int
-  hashtag String[]
-  minnum Int
-  views Int
-  user User @relation(fields : [userId],references : [id])
+  campaignPostId Int
+  userId Int
+  campainPost CampaignPost @relation(fields : [campainPostId], references : [id])
+  user User @relation(fields : [userId], references : [id])
 }
+
