@@ -30,7 +30,9 @@ model CampaignPost {
   location String
   maxnum Int
   hashtag String[]
+  photo String[]
   minnum Int
   views Int
+  isfund Boolean
   user User @relation(fields : [userId],references : [id])
 }
