@@ -1,4 +1,5 @@
-import React, { useState, useEffect } from 'react';
+import { useNavigation } from '@react-navigation/native';
+import React from 'react';
 import {
   View,
   Text,
@@ -57,9 +58,12 @@ const ProgressBar = (data) => {
     </View>
   );
 };
-export default function CompaignComponent(data) {
+
+export default function CampaignComponent(data) {
+	const navigation = useNavigation();
   	return (
 		<TouchableOpacity
+			onPress={()=>navigation.navigate("ViewCampaignPost")}
 			style={{
 				marginTop: 10,
 				marginBottom: 10,
