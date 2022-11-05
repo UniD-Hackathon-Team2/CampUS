@@ -82,7 +82,7 @@ export default function MainNav() {
         options={{
           headerBackTitle: () => null,
           headerTitle: () => (
-            <Text style={{ fontSize: 24, fontFamily: 'Jalnan', marginTop: 10 }}>
+            <Text style={{ fontSize: 20, fontFamily: 'Jalnan', marginTop: 10 }}>
               캠페인 작성
             </Text>
           ),
@@ -95,7 +95,7 @@ export default function MainNav() {
         options={{
           headerBackTitle: () => null,
           headerTitle: () => (
-            <Text style={{ fontSize: 24, fontFamily: 'Jalnan', marginTop: 10 }}>
+            <Text style={{ fontSize: 20, fontFamily: 'Jalnan', marginTop: 10 }}>
               인증 작성
             </Text>
           ),
@@ -108,8 +108,8 @@ export default function MainNav() {
         options={{
           headerBackTitle: () => null,
           headerTitle: () => (
-            <Text style={{ fontSize: 24, fontFamily: 'Jalnan', marginTop: 10 }}>
-              캠페인 글 보기
+            <Text style={{ fontSize: 20, fontFamily: 'Jalnan', marginTop: 10 }}>
+              캠페인 게시판
             </Text>
           ),
           headerTitleAlign: 'center',
@@ -121,7 +121,7 @@ export default function MainNav() {
         options={{
           headerBackTitle: () => null,
           headerTitle: () => (
-            <Text style={{ fontSize: 24, fontFamily: 'Jalnan', marginTop: 10 }}>
+            <Text style={{ fontSize: 20, fontFamily: 'Jalnan', marginTop: 10 }}>
               모금 완료
             </Text>
           ),

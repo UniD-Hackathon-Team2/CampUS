@@ -6,7 +6,7 @@ import { createUploadLink } from "apollo-upload-client";
 import { WebSocketLink } from "@apollo/client/link/ws";
 import { onError } from "@apollo/client/link/error";
 
-export const isLoggedInVar = makeVar(true);
+export const isLoggedInVar = makeVar(false);
 export const tokenVar = makeVar("");
 
 const TOKEN = "token";

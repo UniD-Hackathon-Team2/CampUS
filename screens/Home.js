@@ -24,8 +24,8 @@ const AUTH_DATA = [{
     date: "2022.11.5(일)",
     campaign: `일회용품 줄이기 같이 참여해주세요`,
     image: "https://mblogthumb-phinf.pstatic.net/MjAxODEwMTlfMTgx/MDAxNTM5OTI4MjAwNDEx.k7oG-Q0tA6bdI1smaMzsK4t08NREjRrq3OthZKoIz8Qg.BeZxWi7HekwTWipOckbNWpvnesXuHjpldNGA7QppprUg.JPEG.retspe/eb13.jpg?type=w800",
-    viewCount: 1023,
-    commentCount: 2,
+    viewCount: 15,
+    commentCount: 0,
 },
 {   
     id: 2,
@@ -37,8 +37,8 @@ const AUTH_DATA = [{
     date: "2022.11.5(일)",
     campaign: `지구를 지켜요`,
     image: "http://m.mughome.com/web/product/big/201503/144_shop1_380845.jpg",
-    viewCount: 1023,
-    commentCount: 2,
+    viewCount: 12,
+    commentCount: 1,
 }, {
     id: 3,
     title: '오운완 인증',
@@ -49,7 +49,7 @@ const AUTH_DATA = [{
     date: "2022.11.5(일)",
     campaign: `지켜주세요 캠페인`,
     image: "http://health.chosun.com/site/data/img_dir/2019/04/30/2019043001203_0.jpg",
-    viewCount: 1023,
+    viewCount: 25,
     commentCount: 2,
 }, {
     id: 4,
@@ -61,8 +61,8 @@ const AUTH_DATA = [{
     date: "2022.11.6(월)",
     campaign: "따로 또 같이",
     image: "https://guide.worksmobile.com/kr/images/tips-img-07@2x.png",
-    viewCount: 1023,
-    commentCount: 2,
+    viewCount: 18,
+    commentCount: 0,
 },
 {
     id: 5,
@@ -74,8 +74,8 @@ const AUTH_DATA = [{
     date: "2022.11.6(월)",
     campaign: "안녕하세요 내가 먼저",
     image: "https://cdn-icons-png.flaticon.com/512/2717/2717377.png",
-    viewCount: 1023,
-    commentCount: 2,
+    viewCount: 21,
+    commentCount: 4,
 }]
 
 
