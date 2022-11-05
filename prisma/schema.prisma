@@ -18,12 +18,14 @@ model User {
   userId String @unique 
   userPassword String
   hashtag String[]
+
   campaignPosts CampaignPost[]
   authPosts AuthPost[]
+  comments Comment[]
 }
 
 model CampaignPost {
-  id  Int @id @default(autoincrement())
+  id Int @id @default(autoincrement())
   userId Int
   createdAt DateTime @default(now())
   title String
@@ -35,8 +37,10 @@ model CampaignPost {
   minnum Int
   views Int
   isfund Boolean
+
   user User @relation(fields : [userId],references : [id])
   authPost AuthPost[]
+  comments Comment[]
 }
 
 model AuthPost {
@@ -48,6 +52,21 @@ model AuthPost {
   campaignPostId Int
   authUserId Int
   campaignPost CampaignPost @relation(fields : [campaignPostId], references : [id])
+
   authUser User @relation(fields : [authUserId], references : [id])
+  comments Comment[]
 }
 
+
+model Comment{
+  id Int @id @default(autoincrement())
+  userId Int
+  authId Int
+  campaignpostId Int
+  createAt DateTime @default(now())
+  text String
+
+  user User @relation (fields: [userId], references: [id])
+  authpost AuthPost@relation (fields: [authId], references: [id])
+  campaignpost CampaignPost @relation (fields: [campaignpostId], references: [id])
+}
