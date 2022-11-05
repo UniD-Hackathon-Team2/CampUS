@@ -32,7 +32,6 @@ model CampaignPost {
   location String
   maxnum Int
   hashtag String[]
-  photo String[]
   minnum Int
   views Int
   isfund Boolean
