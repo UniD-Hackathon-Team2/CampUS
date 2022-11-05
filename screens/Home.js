@@ -103,23 +103,40 @@ export default function Home({navigation}){
             </View>
             {
                 selectedList == "Campaign" ? (
-                    <FlatList
+                    /*<FlatList
                         onEndReachedThreshold={0.02}
                         refreshing={refreshing}
                         onRefresh={refresh}
                         showsVerticalScrollIndicator={false}
                         renderItem={renderCampaign}
-                    />
+                    />*/
+                    <Text>캠페인</Text>
                 ): (
-                    <FlatList
+                    /*<FlatList
                         onEndReachedThreshold={0.02}
                         refreshing={refreshing}
                         onRefresh={refresh}
                         showsVerticalScrollIndicator={false}
                         renderItem={renderAuth}
-                    />
+                    />*/
+                    <Text>인증</Text>
                 )
             }
+            <TouchableOpacity 
+                style={{
+                    position: "absolute",
+                    right: 30,
+                    bottom: 50,
+                    width: 40,
+                    height: 40,
+                    justifyContent: "center",
+                    alignItems: "center",
+                    borderRadius: 100,
+                    backgroundColor: "purple"
+                }}
+            >
+                <Text style={{color: "white"}}>+</Text>
+            </TouchableOpacity>
             
         </Container>
     );

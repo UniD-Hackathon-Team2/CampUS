@@ -5,6 +5,7 @@ import AppLoading from "expo-app-loading";
 import { Text, TouchableOpacity } from "react-native"
 import { WithLocalSvg } from "react-native-svg";
 import Login from "../screens/Login";
+import MainNav from "./MainNav";
 
 const Stack = createStackNavigator();
 
@@ -44,6 +45,11 @@ export default function LoginNav(){
 						</Text>
 					),
 				}}
+            />
+            <Stack.Screen
+                name="MainNav"
+                component={MainNav}
+                options={{headerShown: false}}
             />
         </Stack.Navigator>
     );
