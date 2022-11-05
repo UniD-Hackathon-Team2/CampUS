@@ -24,19 +24,18 @@ model User {
 }
 
 model CampaignPost {
-  id            Int @id @default(autoincrement())
-  userId        Int
-  createdAt     DateTime @default(now())
-  title         String
-  text          String
-  location      String
-  maxnum        Int
-  hashtag       String[]
-  photo         String[]
-  minnum        Int
-  views         Int
-  isfund        Boolean
-
+  id Int @id @default(autoincrement())
+  userId Int
+  createdAt DateTime @default(now())
+  title String
+  text String
+  location String
+  maxnum Int
+  hashtag String[]
+  photo String[]
+  minnum Int
+  views Int
+  isfund Boolean
   user User @relation(fields : [userId],references : [id])
   authPost AuthPost[]
   comments Comment[]

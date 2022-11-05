@@ -7,6 +7,7 @@ export default {
             _, { userName, gender, userId, userPassword ,hashtag}
         ) => {
             try {
+                console.log("create user");
                 const existinguserName = await client.user.findFirst({
                     where : {
                         userName
@@ -29,12 +30,13 @@ export default {
                         error : "This userName is already used",
                     }
                 }
+                const uglyPassword = await bcrypt.hash(userPassword, 10);
                 await client.user.create({
                     data: {
                         userName,
                         gender,
                         userId,
-                        userPassword,
+                        userPassword : uglyPassword,
                         hashtag
                     }
                 });

@@ -5,7 +5,9 @@ import jwt from "jsonwebtoken";
 export default {
     Mutation: {
 		login: async (_, { userId, userPassword }) => {
+            console.log("start!");
 			const user = await client.user.findFirst({ where: { userId } });
+            console.log("user : ",user);
 			if (!user) {
 				return {
 					ok: false,
