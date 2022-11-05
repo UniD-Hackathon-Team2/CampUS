@@ -1,9 +1,8 @@
 import { gql } from "apollo-server";
 
 export default gql`
-    scalar Upload
     type Mutation {
-        uploadPost(
+        uploadCampaignPost(
             title: String,
             text: String,
             location: String,
