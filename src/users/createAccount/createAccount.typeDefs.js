@@ -6,6 +6,7 @@ export default gql`
         userName: String!
         gender : String!
         userId: String!
+        hashtag: [String]
         userPassword: String!
         ): MutationResponse!
     }

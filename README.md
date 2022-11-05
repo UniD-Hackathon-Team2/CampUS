@@ -19,7 +19,7 @@ CampUS_Backend
 
 ### AUTH POST ###
 - [] 조회수 증가 기능
-- [] 캠페인 포스트와 연결
+- [x] 캠페인 포스트와 연결
 
 ### COMMENT ###
 - [] auth post와 연결

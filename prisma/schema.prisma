@@ -12,13 +12,12 @@ datasource db {
 
 model User {
   id  Int @id @default(autoincrement())
-  createdAt DateTime @default(now())
   gender String
   userName String @unique
   userId String @unique 
   userPassword String
   hashtag String[]
-
+  createdAt DateTime @default(now())
   campaignPosts CampaignPost[]
   authPosts AuthPost[]
   comments Comment[]
@@ -52,11 +51,9 @@ model AuthPost {
   campaignPostId Int
   authUserId Int
   campaignPost CampaignPost @relation(fields : [campaignPostId], references : [id])
-
   authUser User @relation(fields : [authUserId], references : [id])
   comments Comment[]
 }
-
 
 model Comment{
   id Int @id @default(autoincrement())
@@ -65,7 +62,6 @@ model Comment{
   campaignpostId Int
   createAt DateTime @default(now())
   text String
-
   user User @relation (fields: [userId], references: [id])
   authpost AuthPost@relation (fields: [authId], references: [id])
   campaignpost CampaignPost @relation (fields: [campaignpostId], references: [id])
