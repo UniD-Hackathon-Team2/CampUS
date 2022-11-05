@@ -17,4 +17,37 @@ model User {
   userName String @unique
   userId String @unique 
   userPassword String
+  hashtag String[]
+  campaignPosts CampaignPost[]
+  authPosts AuthPost[]
 }
+
+model CampaignPost {
+  id  Int @id @default(autoincrement())
+  userId Int
+  createdAt DateTime @default(now())
+  title String
+  text String
+  location String
+  maxnum Int
+  hashtag String[]
+  photo String[]
+  minnum Int
+  views Int
+  isfund Boolean
+  user User @relation(fields : [userId],references : [id])
+  authPost AuthPost[]
+}
+
+model AuthPost {
+  id Int @id @default(autoincrement())
+  createdAt DateTime @default(now())
+  photo String[]
+  title String
+  text String
+  campaignPostId Int
+  authUserId Int
+  campaignPost CampaignPost @relation(fields : [campaignPostId], references : [id])
+  authUser User @relation(fields : [authUserId], references : [id])
+}
+

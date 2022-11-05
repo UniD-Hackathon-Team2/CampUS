@@ -8,5 +8,6 @@ type User {
     userName : String!
     userId : String!
     userPassword : String!
+    hashtag : [String]
 }
 `
