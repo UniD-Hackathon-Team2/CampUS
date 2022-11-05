@@ -4,6 +4,7 @@ import styled from "styled-components";
 import { logUserIn, loguserIn } from "../apollo";
 import { ActivityIndicator, Alert, View, TouchableOpacity, Text, TextInput, Image } from "react-native";
 import { KeyboardAwareScrollView } from "react-native-keyboard-aware-scroll-view";
+import { colors } from "../colors";
 
 const Container = styled.View`
     flex: 1;
@@ -114,7 +115,7 @@ export default function Login({navigation}){
                         height: 40,
                         alignSelf: "center",
                         marginTop: 30,
-                        backgroundColor: "purple",
+                        backgroundColor: colors.purple,
                         borderRadius: 20
                     }}
                 >
@@ -134,7 +135,7 @@ export default function Login({navigation}){
                         height: 40,
                         alignSelf: "center",
                         marginTop: 20,
-                        backgroundColor: "purple",
+                        backgroundColor: colors.lightPurple,
                         borderRadius: 20
                     }}  
                     onPress={()=>navigation.navigate("CreateAccount")}  
