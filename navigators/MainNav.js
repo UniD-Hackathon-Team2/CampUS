@@ -7,8 +7,9 @@ import { WithLocalSvg } from "react-native-svg";
 import Home from "../screens/Home";
 import MyInfo from "../screens/MyInfo";
 import Search from "../screens/Search";
-import WirteCampainPost from "../screens/WriteCampaignPost";
+import WriteCampaignPost from "../screens/WriteCampaignPost";
 import WriteAuthPost from "../screens/WriteAuthPost";
+
 
 const Stack = createStackNavigator();
 
@@ -85,7 +86,7 @@ export default function MainNav({navigation}){
                     ),
                     headerTitleAlign: "center",
                 }}
-                component={WirteCampainPost}
+                component={WriteCampaignPost}
             />
             <Stack.Screen
                 name="WriteAuthPost"
