@@ -11,43 +11,58 @@ datasource db {
 }
 
 model User {
-  id  Int @id @default(autoincrement())
-  createdAt DateTime @default(now())
-  gender String
-  userName String @unique
-  userId String @unique 
-  userPassword String
-  hashtag String[]
+  id              Int @id @default(autoincrement())
+  gender          String
+  userName        String @unique
+  userId          String @unique 
+  userPassword    String
+  hashtag         String[]
+  createdAt       DateTime @default(now())
   campaignPosts CampaignPost[]
   authPosts AuthPost[]
+  comments  Comment[]
 }
 
 model CampaignPost {
-  id  Int @id @default(autoincrement())
-  userId Int
-  createdAt DateTime @default(now())
-  title String
-  text String
-  location String
-  maxnum Int
-  hashtag String[]
-  photo String[]
-  minnum Int
-  views Int
-  isfund Boolean
+  id            Int @id @default(autoincrement())
+  userId        Int
+  createdAt     DateTime @default(now())
+  title         String
+  text          String
+  location      String
+  maxnum        Int
+  hashtag       String[]
+  photo         String[]
+  minnum        Int
+  views         Int
+  isfund        Boolean
+
   user User @relation(fields : [userId],references : [id])
   authPost AuthPost[]
+  comments Comment[]
 }
 
 model AuthPost {
-  id Int @id @default(autoincrement())
-  createdAt DateTime @default(now())
-  photo String[]
-  title String
-  text String
-  campaignPostId Int
-  authUserId Int
+  id                          Int @id @default(autoincrement())
+  createdAt                   DateTime @default(now())
+  photo                       String[]
+  title                       String
+  text                        String
+  campaignPostId              Int
+  authUserId                  Int
   campaignPost CampaignPost @relation(fields : [campaignPostId], references : [id])
   authUser User @relation(fields : [authUserId], references : [id])
+  comments Comment[]
 }
 
+model Comment{
+  id                Int @id @default(autoincrement())
+  userId            Int
+  authId            Int
+  campaignpostId    Int
+  createAt          DateTime @default(now())
+  text              String
+  user User @relation (fields: [userId], references: [id])
+  authpost AuthPost @relation (fields: [authId], references: [id])
+  campaignpost CampaignPost @relation (fields: [campaignpostId], references: [id])
+}
