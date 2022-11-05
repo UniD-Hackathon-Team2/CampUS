@@ -36,9 +36,6 @@ export default function WriteCampaignPost({navigation}) {
                     placeholder={`제목을 입력하세요.`}
                     placeholderTextColor='#C5C8CE'
                 />
-                <Text style={{
-                    
-                }}>제목</Text>
                 <Text style={{color: "purple", marginTop: 20}}>마감일</Text>
                 <View
                     style={{
