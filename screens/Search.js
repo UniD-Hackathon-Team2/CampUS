@@ -1,6 +1,7 @@
 import React, {useState} from "react";
 import styled from "styled-components";
 import { View, Text, TextInput, TouchableOpacity } from "react-native";
+import { colors } from "../colors"
 
 const Container = styled.View`
     flex: 1;
@@ -25,6 +26,7 @@ export default function Search({navigation}){
                     paddingHorizontal: 10
                 }}
                 placeholder="검색어를 입력해주세요."
+                placeholderTextColor={"gray"}
                 returnKeyType="done"
                 onChangeText={(keyword)=>setKeyword(keyword)}
             />
