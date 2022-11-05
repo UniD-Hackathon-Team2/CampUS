@@ -14,7 +14,7 @@ const Container = styled.View`
 export default function WriteCampaignPost({navigation}) {
     return(
         <TouchableWithoutFeedback onPress={() => {
-            Keyboard.dismiss()
+            Keyboard.dismiss();
         }}>
         <Container>
             <ScrollView
