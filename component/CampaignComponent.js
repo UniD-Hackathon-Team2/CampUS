@@ -6,8 +6,8 @@ import {
   Dimensions,
   StyleSheet,
   Pressable,
+  TouchableOpacity
 } from 'react-native';
-import { Directions } from 'react-native-gesture-handler';
 
 const Width = Dimensions.get('screen').width;
 const Height = Dimensions.get('screen').height;
@@ -58,162 +58,164 @@ const ProgressBar = (data) => {
   );
 };
 export default function CompaignComponent(data) {
-  return (
-    <View
-      style={{
-        borderRadius: 10,
-        backgroundColor: '#F7F7FB',
-        height: Layout.Height * 0.3,
-        width: Layout.Width * 0.86,
-        ...Platform.select({
-          ios: {
-            shadowColor: 'rgb(50, 50, 50)',
-            shadowOpacity: 0.5,
-            shadowRadius: 7,
-            shadowOffset: {
-              height: 4,
-              width: 1,
-            },
-          },
-          android: {
-            elevation: 5,
-          },
-        }),
-        padding: 20,
-      }}
-    >
-      <Text
-        style={{
-          color: 'black',
-          fontWeight: 'bold',
-          fontSize: FontScale * 14,
-          marginBottom: 5,
-        }}
-      >
-        {data.title}
-      </Text>
-      <Text
-        style={{
-          color: '#6f6f6f',
-          fontSize: FontScale * 9,
-          marginBottom: 20,
-        }}
-      >
-        {data.writer}
-      </Text>
-      <View
-        style={{
-          flexDirection: 'row',
-          marginBottom: 10,
-          justifyContent: 'space-between',
-          width: Width * 0.54,
-          fontSize: FontScale * 9,
-        }}
-      >
-        <Text style={{ fontSize: FontScale * 9 }}>모집중</Text>
-        <View style={{ flexDirection: 'column' }}>
-          <Text style={{ textAlign: 'right', fontSize: FontScale * 9 }}>
-            {data.part} / 100
-          </Text>
-          {ProgressBar(data)}
-        </View>
-      </View>
-      <View
-        style={{
-          flexDirection: 'row',
-          marginBottom: 20,
-          justifyContent: 'space-between',
-          width: Width * 0.54,
-        }}
-      >
-        <Text style={{ fontSize: FontScale * 9 }}>{data.type}</Text>
-        <Text style={{ fontSize: FontScale * 9 }}>
-          {data.deadline != null ? data.deadline : '상시 진행'}
-        </Text>
-      </View>
-      <Text
-        style={{
-          color: '#6f6f6f',
-          fontSize: FontScale * 10,
-          marginBottom: 10,
-        }}
-      >
-        {data.content}
-      </Text>
-      <View style={{ flexDirection: 'row' }}>
-        {data.hashtag &&
-          data.hashtag.map((item, idx) => {
-            return idx == 0 ? (
-              <Pressable
-                style={({ pressed }) => ({
-                  opacity: pressed ? 0.5 : 1,
-                })}
-                onPress={() => {}}
-              >
-                <View style={styles.hashtag} key={item}>
-                  <Text style={{ color: 'white' }}>{item}</Text>
-                </View>
-              </Pressable>
-            ) : (
-              <Pressable
-                style={({ pressed }) => ({
-                  opacity: pressed ? 0.5 : 1,
-                })}
-                onPress={() => {}}
-              >
-                <View style={[styles.hashtag, styles.hashtagFirst]} key={item}>
-                  <Text style={{ color: '#645CAA' }}>{item}</Text>
-                </View>
-              </Pressable>
-            );
-          })}
-      </View>
-      <View
-        style={{
-          flexDirection: 'row',
-          justifyContent: 'flex-end',
-          marginTop: 10,
-        }}
-      >
-        <Text
-          style={{
-            color: 'black',
-            fontSize: FontScale * 9,
-            marginRight: 10,
-            alignSelf: 'flex-end',
-          }}
-        >
-          {/* {data.viewCount} {data.commentCount} */}
-          조회 {data.viewCount}
-        </Text>
-        <Text
-          style={{
-            color: 'black',
-            fontSize: FontScale * 9,
-          }}
-        >
-          댓글 {data.commentCount}
-        </Text>
-      </View>
-    </View>
-  );
+  	return (
+		<TouchableOpacity
+			style={{
+				marginTop: 10,
+				marginBottom: 10,
+				borderRadius: 10,
+				backgroundColor: '#F7F7FB',
+				height: Layout.Height * 0.3,
+				width: Layout.Width * 0.86,
+				...Platform.select({
+				ios: {
+					shadowColor: 'rgb(50, 50, 50)',
+					shadowOpacity: 0.5,
+					shadowRadius: 7,
+					shadowOffset: {
+					height: 4,
+					width: 1,
+					},
+				},
+				android: {
+					elevation: 5,
+				},
+				}),
+				padding: 20,
+			}}
+		>
+			<Text
+				style={{
+				color: 'black',
+				fontWeight: 'bold',
+				fontSize: FontScale * 14,
+				marginBottom: 5,
+				}}
+			>
+				{data.title}
+			</Text>
+			<Text
+				style={{
+				color: '#6f6f6f',
+				fontSize: FontScale * 9,
+				marginBottom: 20,
+				}}
+			>
+				{data.writer}
+			</Text>
+			<View
+				style={{
+				flexDirection: 'row',
+				marginBottom: 10,
+				justifyContent: 'space-between',
+				width: Width * 0.54,
+				fontSize: FontScale * 9,
+				}}
+			>
+				<Text style={{ fontSize: FontScale * 9 }}>모집중</Text>
+				<View style={{ flexDirection: 'column' }}>
+				<Text style={{ textAlign: 'right', fontSize: FontScale * 9 }}>
+					{data.part} / 100
+				</Text>
+					{ProgressBar(data)}
+				</View>
+			</View>
+			<View
+				style={{
+				flexDirection: 'row',
+				marginBottom: 20,
+				justifyContent: 'space-between',
+				width: Width * 0.54,
+				}}
+			>
+				<Text style={{ fontSize: FontScale * 9 }}>{data.type}</Text>
+				<Text style={{ fontSize: FontScale * 9 }}>
+				{data.deadline != null ? data.deadline : '상시 진행'}
+				</Text>
+			</View>
+			<Text
+				style={{
+				color: '#6f6f6f',
+				fontSize: FontScale * 10,
+				marginBottom: 10,
+				}}
+			>
+				{data.content}
+			</Text>
+			<View style={{ flexDirection: 'row' }}>
+				{data.hashtag &&
+				data.hashtag.map((item, idx) => {
+					return idx == 0 ? (
+					<Pressable
+						style={({ pressed }) => ({
+						opacity: pressed ? 0.5 : 1,
+						})}
+						onPress={() => {}}
+					>
+						<View style={styles.hashtag} key={item}>
+						<Text style={{ color: 'white' }}>{item}</Text>
+						</View>
+					</Pressable>
+					) : (
+					<Pressable
+						style={({ pressed }) => ({
+						opacity: pressed ? 0.5 : 1,
+						})}
+						onPress={() => {}}
+					>
+						<View style={[styles.hashtag, styles.hashtagFirst]} key={item}>
+						<Text style={{ color: '#645CAA' }}>{item}</Text>
+						</View>
+					</Pressable>
+					);
+				})}
+			</View>
+			<View
+				style={{
+				flexDirection: 'row',
+				justifyContent: 'flex-end',
+				marginTop: 10,
+				}}
+			>
+				<Text
+				style={{
+					color: 'black',
+					fontSize: FontScale * 9,
+					marginRight: 10,
+					alignSelf: 'flex-end',
+				}}
+				>
+				{/* {data.viewCount} {data.commentCount} */}
+				조회 {data.viewCount}
+				</Text>
+				<Text
+				style={{
+					color: 'black',
+					fontSize: FontScale * 9,
+				}}
+				>
+				댓글 {data.commentCount}
+				</Text>
+			</View>
+		</TouchableOpacity>
+  	);
 }
 
 const styles = StyleSheet.create({
-  hashtag: {
-    backgroundColor: '#645CAA',
-    color: 'white',
-    borderRadius: 30,
-    padding: 3,
-    paddingHorizontal: 10,
-    margin: 3,
-    marginTop: 10,
-    fontSize: FontScale * 8,
-  },
-  hashtagFirst: {
-    color: '#645CAA',
-    backgroundColor: 'white',
-    borderWidth: 1,
-    borderColor: '#645CAA',
-  },
+    hashtag: {
+      backgroundColor: '#645CAA',
+      color: 'white',
+      borderRadius: 30,
+      padding: 3,
+      paddingHorizontal: 10,
+      margin: 3,
+      marginTop: 10,
+      fontSize: FontScale * 8,
+    },
+    hashtagFirst: {
+      color: '#645CAA',
+      backgroundColor: 'white',
+      borderWidth: 1,
+      borderColor: '#645CAA',
+    },
 });
