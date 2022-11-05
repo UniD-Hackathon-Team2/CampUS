@@ -20,7 +20,6 @@ const data = {
 }
 
 export default function AuthComponent(data) {
-    console.log(data.image)
   	return (
 		<TouchableOpacity
 			style={{
@@ -36,7 +35,7 @@ export default function AuthComponent(data) {
                 }}
             >
                 <Image 
-                    source= {data.image}
+                    source = {{uri: data.image}}
                     style={{
                         width: 40,
                         height: 40
