@@ -16,5 +16,8 @@ type Campaignpost {
     participant : Int
     isfund : Boolean
     user : User
+    nowMoney : Int
+    needMoney : Int
+    duedate : String
 }
 `

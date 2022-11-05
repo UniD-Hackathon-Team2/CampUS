@@ -11,6 +11,8 @@ export default gql`
             minnum: Int
             isfund: Boolean
             views : Int
+            duedate : String
+            needMoney : Int
         ): Campaignpost
     }
 `

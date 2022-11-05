@@ -34,6 +34,9 @@ model Campaignpost {
   hashtag String[]
   minnum Int?
   views Int?
+  duedate String? //마감일
+  nowMoney Int @default(0)//현재 모금액
+  needMoney Int? //필요한 모금액
   participant Int @default(0)
   isfund Boolean?
   user User @relation(fields : [userId],references : [id])

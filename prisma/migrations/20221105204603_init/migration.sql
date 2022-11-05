@@ -24,6 +24,9 @@ CREATE TABLE "Campaignpost" (
     "hashtag" TEXT[],
     "minnum" INTEGER,
     "views" INTEGER,
+    "duedate" TEXT,
+    "nowMoney" INTEGER NOT NULL DEFAULT 0,
+    "needMoney" INTEGER,
     "participant" INTEGER NOT NULL DEFAULT 0,
     "isfund" BOOLEAN,
 
