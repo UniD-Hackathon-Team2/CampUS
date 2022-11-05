@@ -5,6 +5,7 @@ import AppLoading from "expo-app-loading";
 import { Text, TouchableOpacity } from "react-native"
 import { WithLocalSvg } from "react-native-svg";
 import Login from "../screens/Login";
+import CreateAccount from "../screens/CreateAccount";
 import MainNav from "./MainNav";
 
 const Stack = createStackNavigator();
@@ -31,20 +32,16 @@ export default function LoginNav(){
                 name="Login"
                 component={Login}
 				options={{
-					title: "로그인",
-					headerTitleAlign: "center",
-					headerBackTitle: () => null,
-					headerTitle: () => (
-						<Text
-							style={{
-                                fontFamily: "Jalnan",
-                                fontSize: 18,
-							}}
-						>
-							로그인
-						</Text>
-					),
+					headerShown: false
 				}}
+            />
+            <Stack.Screen
+                name="CreateAccount"
+                component={CreateAccount}
+                options={{
+                    headerBackTitle: () => null,
+                    headerTItle: () => null
+                }}
             />
             <Stack.Screen
                 name="MainNav"

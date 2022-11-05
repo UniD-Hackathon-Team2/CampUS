@@ -122,21 +122,43 @@ export default function Home({navigation}){
                     <Text>인증</Text>
                 )
             }
-            <TouchableOpacity 
-                style={{
-                    position: "absolute",
-                    right: 30,
-                    bottom: 50,
-                    width: 40,
-                    height: 40,
-                    justifyContent: "center",
-                    alignItems: "center",
-                    borderRadius: 100,
-                    backgroundColor: "purple"
-                }}
-            >
-                <Text style={{color: "white"}}>+</Text>
-            </TouchableOpacity>
+            {
+                selectedList=="Campaign" ? (
+                    <TouchableOpacity 
+                        style={{
+                            position: "absolute",
+                            right: 20,
+                            bottom: 50,
+                            width: 60,
+                            height: 60,
+                            justifyContent: "center",
+                            alignItems: "center",
+                            borderRadius: 100,
+                            backgroundColor: "purple"
+                        }}
+                        onPress={()=>navigation.navigate("WriteCampaignPost")}
+                    >
+                        <Text style={{color: "white", fontSize: 40}}>+</Text>
+                    </TouchableOpacity>
+                ):(
+                    <TouchableOpacity 
+                        style={{
+                            position: "absolute",
+                            right: 20,
+                            bottom: 50,
+                            width: 60,
+                            height: 60,
+                            justifyContent: "center",
+                            alignItems: "center",
+                            borderRadius: 100,
+                            backgroundColor: "purple"
+                        }}
+                        onPress={()=>navigation.navigate("WriteAuthPost")}
+                    >
+                        <Text style={{color: "white", fontSize: 40}}>+</Text>
+                    </TouchableOpacity>
+                )
+            }
             
         </Container>
     );

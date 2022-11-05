@@ -2,7 +2,7 @@ import React, {useState} from "react";
 import { gql, useMutation } from "@apollo/client";
 import styled from "styled-components";
 import { logUserIn, loguserIn } from "../apollo";
-import { ActivityIndicator, Alert, View, TouchableOpacity, Text, TextInput } from "react-native";
+import { ActivityIndicator, Alert, View, TouchableOpacity, Text, TextInput, Image } from "react-native";
 import { KeyboardAwareScrollView } from "react-native-keyboard-aware-scroll-view";
 
 const Container = styled.View`
@@ -64,31 +64,37 @@ export default function Login({navigation}){
                     width: "100%",
                     alignItems:"center"
                 }}>
-                    <View style={{marginTop: 100, width: "60%"}}>
-                        <Text style={{marginBottom: 10}}>아이디</Text>
+                    <Image 
+                        source={require("../assets/image/logo.png")} 
+                        style={{
+                            marginTop: "50%",
+                            width: 210,
+                            height: 82
+                        }}
+                    />
+                    <View style={{marginTop: 60, width: "60%"}}>
                         <TextInput
                             style={{
-                                borderColor: "black",
-                                borderWidth: 1,
+                                borderBottomColor: "purple",
+                                borderBottomWidth: 1,
                                 width: "100%",
                                 height: 30,
                             }}
                             value={userId}
-                            placeholder="아이디"
+                            placeholder="이메일을 입력하세요."
                             onChangeText={(userId)=>setUserId(userId)}
                         />
                     </View>
                     <View style={{marginTop: 20, width: "60%"}}>
-                        <Text>비밀번호</Text>
                         <TextInput
                             style={{
-                                borderColor: "black",
-                                borderWidth: 1,
+                                borderBottomColor: "purple",
+                                borderBottomWidth: 1,
                                 width: "100%",
                                 height: 30,
                             }}
                             value={userPassword}
-                            placeholder="비밀번호"
+                            placeholder="비밀번호를 입력하세요."
                             secureTextEntry
                             keyboardType="ascii-capable"
                             returnKeyType="done"
@@ -104,20 +110,36 @@ export default function Login({navigation}){
                     style={{
                         alignItems: "center",
                         justifyContent: "center",
-                        width: "30%",
+                        width: "50%",
+                        height: 40,
                         alignSelf: "center",
                         marginTop: 30,
-                        borderColor: "black",
-                        borderWidth: 1
+                        backgroundColor: "purple",
+                        borderRadius: 20
                     }}
                 >
                     {
                         !loading ? (
-                            <Text>로그인</Text>
+                            <Text style={{color: "white"}}>로그인</Text>
                         ) : (
                             <ActivityIndicator size="small" color="gray"/>
                         )
                     }
+                </TouchableOpacity>
+                <TouchableOpacity
+                    style={{
+                        alignItems: "center",
+                        justifyContent: "center",
+                        width: "50%",
+                        height: 40,
+                        alignSelf: "center",
+                        marginTop: 20,
+                        backgroundColor: "purple",
+                        borderRadius: 20
+                    }}  
+                    onPress={()=>navigation.navigate("CreateAccount")}  
+                >
+                    <Text style={{color: "white"}}>회원가입</Text>
                 </TouchableOpacity>
             </KeyboardAwareScrollView>
         </Container>

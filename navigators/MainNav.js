@@ -7,6 +7,8 @@ import { WithLocalSvg } from "react-native-svg";
 import Home from "../screens/Home";
 import MyInfo from "../screens/MyInfo";
 import Search from "../screens/Search";
+import WirteCampainPost from "../screens/WriteCampaignPost";
+import WriteAuthPost from "../screens/WriteAuthPost";
 
 const Stack = createStackNavigator();
 
@@ -73,6 +75,28 @@ export default function MainNav({navigation}){
                     headerTitleAlign: "center",
                 }}
                 component={Search}
+            />
+            <Stack.Screen
+                name="WriteCampaignPost"
+                options={{
+                    headerBackTitle: ()=> null,
+                    headerTitle: ()=> (
+                        <Text style={{fontSize: 24, fontFamily: 'Jalnan', marginTop: 10}}>캠페인 작성</Text>
+                    ),
+                    headerTitleAlign: "center",
+                }}
+                component={WirteCampainPost}
+            />
+            <Stack.Screen
+                name="WriteAuthPost"
+                options={{
+                    headerBackTitle: ()=> null,
+                    headerTitle: ()=> (
+                        <Text style={{fontSize: 24, fontFamily: 'Jalnan', marginTop: 10}}>인증 작성</Text>
+                    ),
+                    headerTitleAlign: "center",
+                }}
+                component={WriteAuthPost}
             />
         </Stack.Navigator>
     )
