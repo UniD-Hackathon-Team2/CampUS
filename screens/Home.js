@@ -5,6 +5,7 @@ import { WithLocalSvg } from "react-native-svg"
 
 import PersonIcon from "../assets/icon/person_black_24dp.svg";
 import SearchIcon from "../assets/icon/search_black_24dp.svg";
+import { colors } from "../colors";
 
 const Container = styled.View`
     flex: 1;
@@ -88,18 +89,42 @@ export default function Home({navigation}){
                 alignItems: "center",
                 justifyContent: "space-between"
             }}>
-                <TouchableOpacity onPress={()=>setSelectedList("Campaign")}>
-                    <Text style={{
-                        fontFamily: 'Jalnan',
-                        fontSize: 20
-                    }}>캠페인</Text>
-                </TouchableOpacity>
-                <TouchableOpacity onPress={()=>setSelectedList("Auth")}>
-                    <Text style={{
-                        fontFamily: 'Jalnan',
-                        fontSize: 20
-                    }}>인증</Text>
-                </TouchableOpacity>
+                {
+                    selectedList == "Campaign" ? (
+                        <TouchableOpacity onPress={()=>setSelectedList("Campaign")}>
+                            <Text style={{
+                                fontFamily: 'Jalnan',
+                                fontSize: 20,
+                                color: colors.purple
+                            }}>캠페인</Text>
+                        </TouchableOpacity>
+                    ): (
+                        <TouchableOpacity onPress={()=>setSelectedList("Campaign")}>
+                            <Text style={{
+                                fontFamily: 'Jalnan',
+                                fontSize: 20
+                            }}>캠페인</Text>
+                        </TouchableOpacity>
+                    )
+                }
+                {
+                    selectedList == "Auth" ? (
+                        <TouchableOpacity onPress={()=>setSelectedList("Auth")}>
+                            <Text style={{
+                                fontFamily: 'Jalnan',
+                                fontSize: 20,
+                                color: colors.purple
+                            }}>인증</Text>
+                        </TouchableOpacity>
+                    ):(
+                        <TouchableOpacity onPress={()=>setSelectedList("Auth")}>
+                            <Text style={{
+                                fontFamily: 'Jalnan',
+                                fontSize: 20
+                            }}>인증</Text>
+                        </TouchableOpacity>
+                    )
+                }
             </View>
             {
                 selectedList == "Campaign" ? (
@@ -134,7 +159,7 @@ export default function Home({navigation}){
                             justifyContent: "center",
                             alignItems: "center",
                             borderRadius: 100,
-                            backgroundColor: "purple"
+                            backgroundColor: colors.purple
                         }}
                         onPress={()=>navigation.navigate("WriteCampaignPost")}
                     >
@@ -151,7 +176,7 @@ export default function Home({navigation}){
                             justifyContent: "center",
                             alignItems: "center",
                             borderRadius: 100,
-                            backgroundColor: "purple"
+                            backgroundColor: colors.purple
                         }}
                         onPress={()=>navigation.navigate("WriteAuthPost")}
                     >

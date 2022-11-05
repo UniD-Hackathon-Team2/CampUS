@@ -1,6 +1,7 @@
 import React, {useState} from "react";
 import styled from "styled-components";
 import { View, Text, TouchableOpacity, TextInput } from "react-native";
+import { RadioButton } from 'react-native-paper';
 
 const Container = styled.View`
     flex: 1;
@@ -11,6 +12,7 @@ const Container = styled.View`
 export default function CreateAccount({navigation}){
     const [userId, setUserId] = useState("");
     const [userPassword, setUserPassword] = useState("");
+    const [userGender, setUserGender] = React.useState("man");
     const [config, setConfig] = useState("");
     return(
         <Container>
@@ -59,6 +61,54 @@ export default function CreateAccount({navigation}){
                     placeholder="비밀번호를 한번 더 입력해주세요."
                     onChangeText={(userId)=>setUserId(userId)}
                 />
+                <View
+                    style={{
+                        width: '100%',
+                        flexDirection: "row",
+                        height: 30,
+                        marginTop: 10
+                    }}
+                >
+                    <View
+                        style={{
+                            flex: 1,
+                            flexDirection: "row"
+                        }}
+                    >
+                        <TextInput
+                            style={{
+                                flex: 1,
+                                borderBottomColor: "purple",
+                                borderBottomWidth: 1
+                            }}
+                            placeholder={`나이`}
+                            placeholderTextColor='#C5C8CE'
+                            keyboardType='numeric'
+                        />
+                        <Text style={{flex: 1, marginStart: 5, marginTop: 7}}>세</Text>
+                    </View>
+                    <View
+                        style={{
+                            flex: 1,
+                            flexDirection: "row"
+                        }}
+                    >
+                        <RadioButton
+                            value="man"
+                            color="#645CAA"
+                            uncheckedColor="#FFFFFF"
+                            status={ userGender === 'man' ? 'checked' : 'unchecked' }
+                            onPress={() => setUserGender('man')}
+                        />
+                        <RadioButton
+                            value="woman"
+                            color="#645CAA"
+                            uncheckedColor="#FFFFFF"
+                            status={ userGender === 'woman' ? 'checked' : 'unchecked' }
+                            onPress={() => setUserGender('woman')}
+                        />
+                    </View>
+                </View>
                 <TouchableOpacity 
                     style={{
                         width: "60%",
