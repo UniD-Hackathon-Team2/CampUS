@@ -30,7 +30,7 @@ const data = {
   commentCount: 2,
 };
 
-const ProgressBar = () => {
+const ProgressBar = (data) => {
   const purple = data.part / data.maxPart;
   const redBool = data.part < data.minPart;
   const red = redBool ? (data.minPart - data.part) / data.maxPart : 0;
@@ -57,7 +57,7 @@ const ProgressBar = () => {
     </View>
   );
 };
-export default function CompaignComponent() {
+export default function CompaignComponent(data) {
   return (
     <View
       style={{
@@ -115,7 +115,7 @@ export default function CompaignComponent() {
           <Text style={{ textAlign: 'right', fontSize: FontScale * 9 }}>
             {data.part} / 100
           </Text>
-          {ProgressBar()}
+          {ProgressBar(data)}
         </View>
       </View>
       <View
