@@ -88,18 +88,42 @@ export default function Home({navigation}){
                 alignItems: "center",
                 justifyContent: "space-between"
             }}>
-                <TouchableOpacity onPress={()=>setSelectedList("Campaign")}>
-                    <Text style={{
-                        fontFamily: 'Jalnan',
-                        fontSize: 20
-                    }}>캠페인</Text>
-                </TouchableOpacity>
-                <TouchableOpacity onPress={()=>setSelectedList("Auth")}>
-                    <Text style={{
-                        fontFamily: 'Jalnan',
-                        fontSize: 20
-                    }}>인증</Text>
-                </TouchableOpacity>
+                {
+                    selectedList == "Campaign" ? (
+                        <TouchableOpacity onPress={()=>setSelectedList("Campaign")}>
+                            <Text style={{
+                                fontFamily: 'Jalnan',
+                                fontSize: 20,
+                                color: "purple"
+                            }}>캠페인</Text>
+                        </TouchableOpacity>
+                    ): (
+                        <TouchableOpacity onPress={()=>setSelectedList("Campaign")}>
+                            <Text style={{
+                                fontFamily: 'Jalnan',
+                                fontSize: 20
+                            }}>캠페인</Text>
+                        </TouchableOpacity>
+                    )
+                }
+                {
+                    selectedList == "Auth" ? (
+                        <TouchableOpacity onPress={()=>setSelectedList("Auth")}>
+                            <Text style={{
+                                fontFamily: 'Jalnan',
+                                fontSize: 20,
+                                color: "purple"
+                            }}>인증</Text>
+                        </TouchableOpacity>
+                    ):(
+                        <TouchableOpacity onPress={()=>setSelectedList("Auth")}>
+                            <Text style={{
+                                fontFamily: 'Jalnan',
+                                fontSize: 20
+                            }}>인증</Text>
+                        </TouchableOpacity>
+                    )
+                }
             </View>
             {
                 selectedList == "Campaign" ? (

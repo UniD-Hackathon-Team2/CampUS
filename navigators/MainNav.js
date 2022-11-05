@@ -59,10 +59,6 @@ export default function MainNav({navigation}){
                 name="MyInfo"
                 options={{
                     headerBackTitle: ()=> null,
-                    headerTitle: ()=> (
-                        <Text style={{fontSize: 24, fontFamily: 'Jalnan', marginTop: 10}}>내 정보</Text>
-                    ),
-                    headerTitleAlign: "center",
                 }}
                 component={MyInfo}
             />
@@ -70,10 +66,6 @@ export default function MainNav({navigation}){
                 name="Search"
                 options={{
                     headerBackTitle: ()=> null,
-                    headerTitle: ()=> (
-                        <Text style={{fontSize: 24, fontFamily: 'Jalnan', marginTop: 10}}>검색</Text>
-                    ),
-                    headerTitleAlign: "center",
                 }}
                 component={Search}
             />
