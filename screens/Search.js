@@ -2,7 +2,8 @@ import React, {useState} from "react";
 import styled from "styled-components";
 import { View, Text, TextInput, TouchableOpacity,FlatList } from "react-native";
 import { colors } from "../colors"
-import CompaignComponent from "../component/CampaignComponent";
+import CampaignComponent from "../component/CampaignComponent";
+
 const Container = styled.View`
     flex: 1;
     background-color: white;
@@ -66,8 +67,7 @@ export default function Search({navigation}){
         setRefreshing(false);
     }
     const renderCampaign = ({ item: data }) => {
-        return (CompaignComponent(data))
-
+        return <CampaignComponent{...data} />
     }
     const [selectedList, setSelectedList] = useState("Campaign");
     const [userInput, setUserInput] = useState("none");
