@@ -1,9 +1,8 @@
-import React, {useState} from "react";
+import React, {useState, useEffect} from "react";
 import { createStackNavigator } from "@react-navigation/stack";
 import * as Font from "expo-font";
 import AppLoading from "expo-app-loading";
-import { Text, TouchableOpacity } from "react-native"
-import { WithLocalSvg } from "react-native-svg";
+import { LogBox } from "react-native"
 import Login from "../screens/Login";
 import CreateAccount from "../screens/CreateAccount";
 import MainNav from "./MainNav";
@@ -11,6 +10,10 @@ import MainNav from "./MainNav";
 const Stack = createStackNavigator();
 
 export default function LoginNav(){
+    useEffect(()=> {
+        LogBox.ignoreLogs(['Warning: ...']); // Ignore log notification by message
+        LogBox.ignoreAllLogs();
+    }, [])
     const [fontLoading, setFontLoading] = useState(true);
     const loadFonts = async()=>{
         await Font.loadAsync({
