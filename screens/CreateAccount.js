@@ -4,6 +4,7 @@ import { View, Text, TouchableOpacity, TextInput } from "react-native";
 import { RadioButton } from 'react-native-paper';
 import { KeyboardAwareScrollView } from "react-native-keyboard-aware-scroll-view";
 import { colors } from "../colors";
+import { gql, useMutation } from "@apollo/client";
 
 const Container = styled.View`
     flex: 1;
@@ -11,11 +12,50 @@ const Container = styled.View`
     align-items: center;
 `;
 
+const CREATE_ACCOUNT_MUTATION = gql`
+    mutation createAccount($userName: String!, $gender: String!, $userId: String, $hashtag: [String], $userPassword: String!) {
+        createAccount(userName: $userName, gender: $gender, userId: $userId, hashtag: $hashtag, userPassword: $userPassword) {
+            ok
+            error
+        }
+    }
+`;
+
+
 export default function CreateAccount({navigation}){
-    const [userId, setUserId] = useState("");
+    const [userId, setUserId] = useState(""); 
     const [userPassword, setUserPassword] = useState("");
     const [userGender, setUserGender] = React.useState("man");
     const [config, setConfig] = useState("");
+
+    const onCompleted = (data) => {
+        const {
+            createAccount: {ok, error},
+        } = data;
+        setMakeProfileLoading(false);
+        if(ok){
+            navigation.navigate("Home");
+        }
+        else if(error){
+            if(error.includes("userName")) {
+                Alert.alert("알림", "이미 가입된 유저네임입니다 !");
+            }
+
+            if(error.includes("userId")) {
+                setNicknameCheck(true);
+            }
+            else{
+                setNicknameCheck(false)
+            };
+        }
+    }
+
+    const [createAccountMutation,{loading}] = useMutation(
+        CREATE_ACCOUNT_MUTATION, {
+            onCompleted,
+        }
+    );
+
     return(
         <Container>
             <KeyboardAwareScrollView
@@ -114,6 +154,20 @@ export default function CreateAccount({navigation}){
                     </View>
                 </View>
                 <Text style={{color: colors.darkPurple, fontSize: 18, marginTop: 40, fontWeight: 'bold'}}>관심 지역 설정</Text>
+                <TextInput
+                    style={{
+                        borderBottomColor: colors.darkPurple,
+                        borderBottomWidth: 2,
+                        width: "100%",
+                        height: 30,
+                        marginTop: 10
+                    }}
+                    value={config}
+                    secureTextEntry
+                    keyboardType="ascii-capable"
+                    placeholder="없음"
+                />
+                 <Text style={{color: colors.darkPurple, fontSize: 18, marginTop: 40, fontWeight: 'bold'}}>해시태그 설정</Text>
                 <TextInput
                     style={{
                         borderBottomColor: colors.darkPurple,

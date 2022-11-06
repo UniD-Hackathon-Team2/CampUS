@@ -31,7 +31,7 @@ export default function MyInfo({navigation}){
                             marginTop: 20
                         }}
                     />
-                    <Text style={{fontSize: 20, marginTop: 15, marginLeft: 20}}>님</Text>
+                    <Text style={{fontSize: 20, marginTop: 15, marginLeft: 20}}>송현빈님</Text>
                 </View>
                 <Text style={{fontSize: 20, marginTop: 30}}>캠페인</Text>
                 <View   

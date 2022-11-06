@@ -1,11 +1,11 @@
 import React, {useState} from "react";
-import { gql, useMutation } from "@apollo/client";
+import { gql, useMutation,useReactiveVar } from "@apollo/client";
 import styled from "styled-components";
-import { logUserIn, loguserIn } from "../apollo";
+import { logUserIn } from "../apollo";
 import { ActivityIndicator, Alert, View, TouchableOpacity, Text, TextInput, Image } from "react-native";
 import { KeyboardAwareScrollView } from "react-native-keyboard-aware-scroll-view";
 import { colors } from "../colors";
-
+import { isLoggedInVar, userLocationVar, whereVar, unreadVar, expoTokenVar } from "../apollo";
 const Container = styled.View`
     flex: 1;
     background-color: white;
@@ -39,6 +39,8 @@ export default function Login({navigation}){
             setLoading(false);
         }
     }
+
+    const isLoggedIn = useReactiveVar(isLoggedInVar);
 
     const [loginMutation] = useMutation(
         LOGIN_MUTATION, {
@@ -106,6 +108,7 @@ export default function Login({navigation}){
                 <TouchableOpacity 
                     onPress={async()=> {
                         setLoading(true)
+                        isLoggedInVar(true)
                         await UserLogin()
                     }}
                     style={{

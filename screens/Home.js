@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react"
-import styled from "styled-components"
+import styled from "styled-components";
+import { gql, useMutation, useQuery, useReactiveVar } from "@apollo/client";
 import { View, Text, TouchableOpacity, FlatList, Image } from "react-native";
 import { WithLocalSvg } from "react-native-svg"
 import PersonIcon from "../assets/icon/person_black_24dp.svg";
@@ -7,6 +8,7 @@ import SearchIcon from "../assets/icon/search_black_24dp.svg";
 import { colors } from "../colors";
 import CampaignComponent from "../component/CampaignComponent";
 import AuthComponent from "../component/AuthComponent";
+import { isLoggedInVar, userLocationVar, whereVar, unreadVar, expoTokenVar } from "../apollo";
 
 const Container = styled.View`
     flex: 1;
@@ -78,11 +80,57 @@ const AUTH_DATA = [{
     commentCount: 4,
 }]
 
+const searchDATA = [{
+    id: 1,
+    title: '일주일 육식 금지 캠페인',
+    writer: '채소 조아',
+    part: 30,
+    minPart: 60,
+    maxPart: 100,
+    type: 'offline',
+    deadline: null,
+    content: `일주일간 육식을 하지 않으실 분을 구합니다!`,
+    hashtag: ['#비건', '#동물', '#사랑'],
+    image: "http://cdn.bosa.co.kr/news/photo/202106/2151829_183759_1152.jpg",
+    viewCount: 1023,
+    commentCount: 2,
+}, {
 
+    id: 2,
+    title: '채식하는날 캠페인',
+    writer: '대덕이',
+    part: 30,
+    minPart: 60,
+    maxPart: 100,
+    type: 'offline',
+    deadline: null,
+    content: `1주일에 1일씩 채식을 하실 분 구합니다.`,
+    hashtag: ['#비건', '#식습관', '#건강'],
+    image: "http://www.dailycc.net/news/photo/202101/630096_511050_1302.jpg",
+    viewCount: 1023,
+    commentCount: 2,
+
+}, {
+
+    id: 3,
+    title: '비건 한달 캠페인',
+    writer: '러쉬',
+    part: 30,
+    minPart: 60,
+    maxPart: 100,
+    type: 'offline',
+    deadline: null,
+    content: `1주일에 1일씩 채식을 하실 분 구합니다.`,
+    hashtag: ['#비건', '#채식', '#환경'],
+    image: "https://www.vegilog.com/wp-content/uploads/2022/01/20220118-news02.jpg",
+    viewCount: 1023,
+    commentCount: 2,
+
+}]
 
 const DATA = [{
-    id : 1,
-    title: '내 건강 내가 지켜',
+    id: 1,
+    title: '내 건강 내가 지켜 캠페인',
     writer: '러닝 조아',
     part: 10,
     minPart: 100,
@@ -95,7 +143,7 @@ const DATA = [{
     viewCount: 10,
     commentCount: 2,
 }, {
-    id : 2,
+    id: 2,
     title: '내 그릇 사용 캠페인',
     writer: '그릇 지키미',
     part: 8,
@@ -109,8 +157,8 @@ const DATA = [{
     viewCount: 20,
     commentCount: 0,
 }, {
-    id : 3,
-    title: '다시 입다',
+    id: 3,
+    title: '다시 입다 캠페인',
     writer: '패셔니스타',
     part: 10,
     minPart: 60,
@@ -123,8 +171,8 @@ const DATA = [{
     viewCount: 11,
     commentCount: 1,
 }, {
-    id : 4,
-    title: 'CUP A TEE',
+    id: 4,
+    title: 'CUP A TEE 캠페인',
     writer: '머그컵',
     part: 30,
     minPart: 60,
@@ -137,7 +185,21 @@ const DATA = [{
     viewCount: 45,
     commentCount: 5,
 }, {
-    id : 5,
+    id: 5,
+    title: '북적북적 캠페인',
+    writer: '책책',
+    part: 30,
+    minPart: 60,
+    maxPart: 100,
+    type: 'online',
+    deadline: null,
+    hashtag: ['#책', '#독서', '#비대면'],
+    content: `나를 위해 지구를 위해 풀무원 줍깅 캠페인!...`,
+    image: "https://mediahub.seoul.go.kr/wp-content/uploads/editor/images/000440/%E1%84%89%E1%85%A1%E1%84%8C%E1%85%B5%E1%86%AB_4.jpg",
+    viewCount: 1023,
+    commentCount: 2,
+}, {
+    id: 6,
     title: '풀무원 줍깅 캠페인',
     writer: '풀무원',
     part: 6,
@@ -149,14 +211,47 @@ const DATA = [{
     content: `나를 위해 지구를 위해 풀무원 줍깅 캠페인!...`,
     image: "https://www.google.com/url?sa=i&url=https%3A%2F%2Fnews.pulmuone.co.kr%2Fpulmuone%2Fnewsroom%2FviewNewsroom.do%3Fid%3D2568&psig=AOvVaw3wCaWZ-FuMd0BakK1esqvX&ust=1667760385742000&source=images&cd=vfe&ved=0CAwQjRxqFwoTCMi0pNzZl_sCFQAAAAAdAAAAABAH",
     viewCount: 31,
-    commentCount: 4,
+    commentCount: 2,
+},{
+    id: 7,
+    title: '일주일 육식 금지 캠페인',
+    writer: '채소 조아',
+    part: 30,
+    minPart: 60,
+    maxPart: 100,
+    type: 'offline',
+    deadline: null,
+    content: `일주일간 육식을 하지 않으실 분을 구합니다!`,
+    hashtag: ['#비건', '#동물', '#사랑'],
+    image: "http://cdn.bosa.co.kr/news/photo/202106/2151829_183759_1152.jpg",
+    viewCount: 1023,
+    commentCount: 2,
+},{
+    id: 8,
+    title: '비건 한달 캠페인',
+    writer: '러쉬',
+    part: 30,
+    minPart: 60,
+    maxPart: 100,
+    type: 'offline',
+    deadline: null,
+    content: `1주일에 1일씩 채식을 하실 분 구합니다.`,
+    hashtag: ['#비건', '#채식', '#환경'],
+    image: "https://www.vegilog.com/wp-content/uploads/2022/01/20220118-news02.jpg",
+    viewCount: 1023,
+    commentCount: 2,
+
 }];
 
 
 
 export default function Home({ navigation }) {
+    
     const [refreshing, setRefreshing] = useState(false);
     const [selectedList, setSelectedList] = useState("Campaign");
+    const [isLoggedIn, setIsLoggedIn] = useState(useReactiveVar(isLoggedInVar));
+
+
     const refresh = async () => {
         setRefreshing(true);
         //await refetch();
@@ -264,12 +359,12 @@ export default function Home({ navigation }) {
             {
                 selectedList == "Campaign" ? (
                     <FlatList
-                        style={{marginTop : 10}}
+                        style={{ marginTop: 10 }}
                         onEndReachedThreshold={0.02}
                         refreshing={refreshing}
                         onRefresh={refresh}
                         showsVerticalScrollIndicator={false}
-                        data = {DATA}
+                        data={DATA}
                         keyExtractor={(item) => String(item.id)}
                         renderItem={renderCampaign}
                     />

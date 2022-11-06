@@ -9,6 +9,7 @@ import {
   Pressable,
   TouchableOpacity
 } from 'react-native';
+import { colors } from '../colors';
 
 const Width = Dimensions.get('screen').width;
 const Height = Dimensions.get('screen').height;
@@ -41,19 +42,20 @@ const ProgressBar = (data) => {
       style={{
         width: barWidth,
         height: 3,
-        backgroundColor: 'gray',
+        backgroundColor: colors.darkGray,
         flexDirection: 'row',
       }}
     >
       <View
         style={{
-          backgroundColor: 'purple',
+          backgroundColor: colors.darkPurple,
           width: barWidth * purple,
           height: 3,
         }}
       />
       <View
-        style={{ backgroundColor: 'red', width: barWidth * red, height: 3 }}
+        style={{ backgroundColor: 'red',
+          width: barWidth * red, height: 3 }}
       ></View>
     </View>
   );
@@ -63,7 +65,7 @@ export default function CampaignComponent(data) {
 	const navigation = useNavigation();
   	return (
 		<TouchableOpacity
-			onPress={()=>navigation.navigate("ViewCampaignPost")}
+			onPress={({data})=>navigation.navigate("ViewCampaignPost")}
 			style={{
 				marginTop: 10,
 				marginBottom: 10,
