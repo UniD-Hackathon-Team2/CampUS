@@ -44,91 +44,91 @@ export default function MainNav() {
         },
       }}
     >
-      <Stack.Screen
-        name="Home"
-        options={{
-          headerBackTitle: () => null,
-          headerLeft: () => null,
-          headerTitle: () => (
-            <Image
-              source={require('../assets/image/logo.png')}
-              style={{
-                width: 80,
-                height: 30,
-                marginTop: 5,
-              }}
-            />
-          ),
-          headerTitleAlign: 'center',
-        }}
-        component={Home}
-      />
-      <Stack.Screen
-        name="MyInfo"
-        options={{
-          headerBackTitle: () => null,
-        }}
-        component={MyInfo}
-      />
-      <Stack.Screen
-        name="Search"
-        options={{
-          headerBackTitle: () => null,
-        }}
-        component={Search}
-      />
-      <Stack.Screen
-        name="WriteCampaignPost"
-        options={{
-          headerBackTitle: () => null,
-          headerTitle: () => (
-            <Text style={{ fontSize: 20, fontFamily: 'Jalnan', marginTop: 10 }}>
-              캠페인 작성
-            </Text>
-          ),
-          headerTitleAlign: 'center',
-        }}
-        component={WriteCampaignPost}
-      />
-      <Stack.Screen
-        name="WriteAuthPost"
-        options={{
-          headerBackTitle: () => null,
-          headerTitle: () => (
-            <Text style={{ fontSize: 20, fontFamily: 'Jalnan', marginTop: 10 }}>
-              인증 작성
-            </Text>
-          ),
-          headerTitleAlign: 'center',
-        }}
-        component={WriteAuthPost}
-      />
-      <Stack.Screen
-        name="ViewCampaignPost"
-        options={{
-          headerBackTitle: () => null,
-          headerTitle: () => (
-            <Text style={{ fontSize: 20, fontFamily: 'Jalnan', marginTop: 10 }}>
-              캠페인 게시판
-            </Text>
-          ),
-          headerTitleAlign: 'center',
-        }}
-        component={ViewCampaignPost}
-      />
-      <Stack.Screen
-        name="FundRaisingComplete"
-        options={{
-          headerBackTitle: () => null,
-          headerTitle: () => (
-            <Text style={{ fontSize: 20, fontFamily: 'Jalnan', marginTop: 10 }}>
-              모금 완료
-            </Text>
-          ),
-          headerTitleAlign: 'center',
-        }}
-        component={FundRaisingComplete}
-      />
+		<Stack.Screen
+			name="Home"
+			options={{
+			headerBackTitle: () => null,
+			headerLeft: () => null,
+			headerTitle: () => (
+				<Image
+				source={require('../assets/image/logo.png')}
+				style={{
+					width: 80,
+					height: 30,
+					marginTop: 5,
+				}}
+				/>
+			),
+			headerTitleAlign: 'center',
+			}}
+			component={Home}
+		/>
+		<Stack.Screen
+			name="MyInfo"
+			options={{
+			headerBackTitle: () => null,
+			}}
+			component={MyInfo}
+		/>
+		<Stack.Screen
+			name="Search"
+			options={{
+			headerBackTitle: () => null,
+			}}
+			component={Search}
+		/>
+		<Stack.Screen
+			name="WriteCampaignPost"
+			options={{
+			headerBackTitle: () => null,
+			headerTitle: () => (
+				<Text style={{ fontSize: 20, fontFamily: 'Jalnan', marginTop: 10 }}>
+				캠페인 작성
+				</Text>
+			),
+			headerTitleAlign: 'center',
+			}}
+			component={WriteCampaignPost}
+		/>
+		<Stack.Screen
+			name="WriteAuthPost"
+			options={{
+			headerBackTitle: () => null,
+			headerTitle: () => (
+				<Text style={{ fontSize: 20, fontFamily: 'Jalnan', marginTop: 10 }}>
+				인증 작성
+				</Text>
+			),
+			headerTitleAlign: 'center',
+			}}
+			component={WriteAuthPost}
+		/>
+		<Stack.Screen
+			name="ViewCampaignPost"
+			options={{
+			headerBackTitle: () => null,
+			headerTitle: () => (
+				<Text style={{ fontSize: 20, fontFamily: 'Jalnan', marginTop: 10 }}>
+				캠페인 게시판
+				</Text>
+			),
+			headerTitleAlign: 'center',
+			}}
+			component={ViewCampaignPost}
+		/>
+		<Stack.Screen
+			name="FundRaisingComplete"
+			options={{
+			headerBackTitle: () => null,
+			headerTitle: () => (
+				<Text style={{ fontSize: 20, fontFamily: 'Jalnan', marginTop: 10 }}>
+				모금 완료
+				</Text>
+			),
+			headerTitleAlign: 'center',
+			}}
+			component={FundRaisingComplete}
+		/>
     </Stack.Navigator>
   );
 }

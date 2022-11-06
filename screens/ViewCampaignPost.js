@@ -1,7 +1,7 @@
-import React from 'react';
+import React, {useState} from 'react';
 import styled from 'styled-components';
 import {
-  TouchableWithoutFeedback,
+  Alert,
   ScrollView,
   View,
   Text,
@@ -14,14 +14,12 @@ import {
 } from 'react-native';
 import { WithLocalSvg } from 'react-native-svg';
 import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view';
-
 import { colors } from '../colors';
 import SharePurple from '../assets/icon/share_button_purple.svg';
 import CommentPurple from '../assets/icon/comment_purple.svg';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
-import FundRaisingComplete from './FundRaisingComplete';
 
-const DATA = {
+/*const DATA = {
   title: '일회용품 줄이기 같이 참여해주세요',
   writer: '환경 지키미',
   part: 30,
@@ -39,7 +37,12 @@ const DATA = {
   goalFundraised: 500000,
   currentFundrasied: 127000,
   createdAt: '2022.11.05 22:01',
-};
+};*/
+
+const Width = Dimensions.get('screen').width;
+const Height = Dimensions.get('screen').height;
+const FontScale = 1.0;
+const AndroidBottomBarHeight = Height - Dimensions.get('window').height - StatusBar.currentHeight;
 
 const Container = styled.View`
   flex: 1;
@@ -47,22 +50,20 @@ const Container = styled.View`
   align-items: center;
 `;
 
-const Width = Dimensions.get('screen').width;
-const Height = Dimensions.get('screen').height;
-const FontScale = 1.0;
-const AndroidBottomBarHeight =
-  Height - Dimensions.get('window').height - StatusBar.currentHeight;
-const radius = 30;
-const FundRatio = () => {
-  const ratio = (DATA.currentFundrasied / DATA.goalFundraised) * 100;
-  return ratio;
-};
-const partRatio = () => {
-  const ratio = (DATA.part / DATA.maxPart) * 100;
-  return ratio;
-};
-
 export default function ViewCampaignPost({ route, navigation }) {
+	const DATA = route?.params?.data;
+	const [part, setPart] = useState(DATA?.part);
+
+	const FundRatio = () => {
+		const ratio = (DATA.currentFundrasied / DATA.goalFundraised) * 100;
+		return ratio;
+  	};
+  
+	const partRatio = () => {
+		const ratio = (DATA.part / DATA.maxPart) * 100;
+		return ratio;
+	};
+
   	return (
 		<Container>
 			<ScrollView
@@ -73,7 +74,7 @@ export default function ViewCampaignPost({ route, navigation }) {
 			>
 				<View style={{width: "100%"}}>
 					<Image
-						source={{ uri: DATA.image }}
+						source={{ uri: DATA?.image }}
 						style={{ width: '100%', height: '26%' }}
 					/>
 					<View style={{ padding: 10, paddingVertical: 20}}>
@@ -193,7 +194,7 @@ export default function ViewCampaignPost({ route, navigation }) {
 									fontWeight: 'bold',
 									}}
 								>
-									인원 : {DATA.part}/{DATA.maxPart}
+									인원 : {part}/{DATA.maxPart}
 								</Text>
 							</View>
 						</View>
@@ -222,12 +223,12 @@ export default function ViewCampaignPost({ route, navigation }) {
 							목표 금액 : {DATA.currentFundrasied} / {DATA.goalFundraised} 원
 						</Text>
 						<Pressable
+							onPress={()=>navigation.navigate("FundRaisingComplete", {
+								data: DATA
+							})}
 							style={({ pressed }) => ({
 								opacity: pressed ? 0.5 : 1,
 							})}
-							onPress={() => {
-								navigation.navigate(FundRaisingComplete);
-							}}
 						>
 							<View
 								style={{
@@ -254,15 +255,15 @@ export default function ViewCampaignPost({ route, navigation }) {
 									alignSelf: 'center',
 								}}
 							>
-							<Text
-								style={{
-								color: 'white',
-								fontWeight: 'bold',
-								fontSize: FontScale * 18,
-								}}
-							>
-								모금 하기
-							</Text>
+								<Text
+									style={{
+									color: 'white',
+									fontWeight: 'bold',
+									fontSize: FontScale * 18,
+									}}
+								>
+									모금 하기
+								</Text>
 							</View>
 						</Pressable>
 					</View>
@@ -278,33 +279,37 @@ export default function ViewCampaignPost({ route, navigation }) {
 				}}
 			>
 				<Pressable
-				style={({ pressed }) => ({
-					opacity: pressed ? 0.5 : 1,
-				})}
-				>
-				<View
-					style={{
-					justifyContent: 'center',
-					alignItems: 'center',
-					backgroundColor: colors.darkPurple,
-					width: Width * 0.55,
-					height: Width * 0.12,
-					margin: 10,
-					marginRight: 0,
-					borderRadius: 5,
+					style={({ pressed }) => ({
+						opacity: pressed ? 0.5 : 1,
+					})}
+					onPress={()=>{
+						setPart(part+1);
+						Alert.alert("알림", "캠페인 참여가 완료됐습니다 !")
 					}}
 				>
-					<Text
-					style={{
-						color: 'white',
-						fontWeight: 'bold',
-						alignSelf: 'center',
-						fontSize: FontScale * 16,
-					}}
+					<View
+						style={{
+						justifyContent: 'center',
+						alignItems: 'center',
+						backgroundColor: colors.darkPurple,
+						width: Width * 0.55,
+						height: Width * 0.12,
+						margin: 10,
+						marginRight: 0,
+						borderRadius: 5,
+						}}
 					>
-					참여 하기
-					</Text>
-				</View>
+						<Text
+							style={{
+								color: 'white',
+								fontWeight: 'bold',
+								alignSelf: 'center',
+								fontSize: FontScale * 16,
+							}}
+						>
+						참여 하기
+						</Text>
+					</View>
 				</Pressable>
 				<Pressable
 				style={({ pressed }) => ({

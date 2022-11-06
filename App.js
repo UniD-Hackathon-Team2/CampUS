@@ -3,11 +3,11 @@ import { NavigationContainer } from "@react-navigation/native";
 import { ApolloProvider } from "@apollo/client";
 import MainNav from "./navigators/MainNav"
 import LoginNav from "./navigators/LoginNav";
-
 import client, { isLoggedInVar, tokenVar } from "./apollo";
 import { useReactiveVar } from "@apollo/client";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 import AppLoading from "expo-app-loading";
+import { LogBox } from 'react-native';
 
 
 export default function App() {
@@ -20,6 +20,7 @@ export default function App() {
 			tokenVar(token);
 		}
 	};
+
 	if(loading) {
 		return(
 			<AppLoading

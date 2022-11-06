@@ -65,13 +65,14 @@ export default function CampaignComponent(data) {
 	const navigation = useNavigation();
   	return (
 		<TouchableOpacity
-			onPress={({data})=>navigation.navigate("ViewCampaignPost")}
+			onPress={()=>navigation.navigate("ViewCampaignPost", {
+				data: data
+			})}
 			style={{
 				marginTop: 10,
 				marginBottom: 10,
 				borderRadius: 10,
 				backgroundColor: '#F7F7FB',
-				height: Layout.Height * 0.3,
 				width: Layout.Width * 0.86,
 				...Platform.select({
 				ios: {
