@@ -1,0 +1,64 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  id              Int @id @default(autoincrement())
+  gender          String
+  userName        String @unique
+  userId          String @unique 
+  userPassword    String
+  participatedPost Int[] //내가 참여한 캠페인 리스트
+  hashtag         String[]
+  createdAt       DateTime @default(now())
+  campaignposts Campaignpost[] //내가 쓴 캠페인 리스트
+  Authposts Authpost[] //내가 쓴 캠페인 리스트
+}
+
+model Campaignpost {
+  id Int @id @default(autoincrement())
+  userId Int
+  createdAt DateTime @default(now())
+  title String?
+  text String?
+  location String?
+  maxnum Int?
+  hashtag String[]
+  minnum Int?
+  views Int?
+  duedate String? //마감일
+  nowMoney Int @default(0)//현재 모금액
+  needMoney Int? //필요한 모금액
+  participant Int @default(0)
+  isfund Boolean?
+  user User @relation(fields : [userId],references : [id])
+}
+
+model Authpost {
+  id                          Int @id @default(autoincrement())
+  userId Int
+  photo                       String[]
+  hashtag                     String[]
+  title                       String
+  text                        String
+  campaignPostId              Int
+  participant Int @default(0)
+  authUserId                  Int
+  user User @relation(fields : [userId],references : [id])
+}
+
+
+model Comment{
+  id                Int @id @default(autoincrement())
+  writerId          Int? // 글쓴 사람의 ID
+  campaignpostId    Int? // 댓글을 쓴 원본 포스트의 ID
+  text              String? 
+}
